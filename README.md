@@ -1,14 +1,14 @@
-# react-touch
+# react-finger
 
 > A simple touch library for React apps. Includes components and hooks!
 
-<!-- [![NPM](https://img.shields.io/npm/v/react-touch.svg)](https://www.npmjs.com/package/react-touch) -->
+<!-- [![NPM](https://img.shields.io/npm/v/react-finger.svg)](https://www.npmjs.com/package/react-finger) -->
 <!-- [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) -->
 
 ## Install
 
 ```bash
-npm install --save react-touch
+npm install --save react-finger
 ```
 
 ## Usage
@@ -16,8 +16,8 @@ npm install --save react-touch
 ```tsx
 import React, { Component } from 'react'
 
-import MyComponent from 'react-touch'
-import 'react-touch/dist/index.css'
+import MyComponent from 'react-finger'
+import 'react-finger/dist/index.css'
 
 class Example extends Component {
   render() {

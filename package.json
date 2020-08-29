@@ -1,10 +1,10 @@
 {
-  "name": "react-touch",
+  "name": "react-finger",
   "version": "1.0.0",
   "description": "A simple touch library for React apps",
   "author": "Caleb Adepitan",
   "license": "MIT",
-  "repository": "calebpitan/react-touch",
+  "repository": "calebpitan/react-finger",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.tsx",
