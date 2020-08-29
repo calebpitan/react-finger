@@ -1,6 +1,6 @@
 # react-touch
 
-> A simple touch library for React apps
+> A simple touch library for React apps. Includes components and hooks!
 
 <!-- [![NPM](https://img.shields.io/npm/v/react-touch.svg)](https://www.npmjs.com/package/react-touch) -->
 <!-- [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) -->
