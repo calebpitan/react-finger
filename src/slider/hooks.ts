@@ -211,6 +211,6 @@ const useSlider = (options: SliderOptions) => {
 }
 
 export type { TouchPhase, Action }
-export { SliderOptions }
+export type { SliderOptions, SliderTransformerProps }
 
-export { useSlider, SliderTransformerProps, TouchPhaseEnum, ActionEnum }
+export { useSlider, TouchPhaseEnum, ActionEnum }
