@@ -13,13 +13,23 @@ enum TouchPhaseEnum {
   TOUCH_END = 'TOUCH_END'
 }
 
+enum ScrollingEnum {
+  MOMENTUM = 'momentum',
+  INERTIA = 'inertia'
+}
+
 type Action = 'next' | 'prev'
 type TouchPhase = 'TOUCH_END' | 'TOUCH_MOVE' | 'TOUCH_START'
+type Scrolling = 'momentum' | 'inertia'
 
 interface SliderOptions {
   threshold?: number
   elasticity?: number
   thresholdSpeed?: number
+  /**
+   * UnImplemented
+   */
+  scrolling?: Scrolling
 }
 
 interface TouchProps {
@@ -182,16 +192,7 @@ const useSlider = (options: SliderOptions) => {
   })
 
   return React.useCallback(
-    (
-      transform: (
-        props: TouchProps & {
-          target: HTMLElement
-          phase: TouchPhase
-          action?: Action
-          rect?: Rectangle
-        }
-      ) => void
-    ) => {
+    (transform: (props: SliderTransformerProps) => void) => {
       return {
         handleStart<T extends HTMLElement>(e: React.TouchEvent<T>) {
           start<T>(e, touchProps, transform)
