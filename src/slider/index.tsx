@@ -2,7 +2,7 @@ import * as React from 'react'
 import { useSlider, TouchPhaseEnum, SliderTransformerProps, SliderOptions } from './hooks'
 import { doAfterPaint } from '../touch-utils'
 
-const TRANSITION = `transform linear var(--trans-time)`
+const TRANSITION = `transform linear`
 
 const transform = ({
   phase,
@@ -28,7 +28,7 @@ const transform = ({
   document.body.style.overflow = `initial`
   Object.assign(target.style, {
     transform: `translate(${domPosition}px)`,
-    transition: TRANSITION
+    transition: TRANSITION + ` ${'0.2s' || 'var(--trans-time)'}` // WIP
   })
 }
 
@@ -50,7 +50,7 @@ const InternalSlider = (
   const touchSlider = useSlider({
     threshold,
     thresholdSpeed,
-    elasticity
+    elasticity,
   })
 
   // TODO: Pass transform from props to this call if undefined pass it the default transform

@@ -13,23 +13,13 @@ enum TouchPhaseEnum {
   TOUCH_END = 'TOUCH_END'
 }
 
-enum ScrollingEnum {
-  MOMENTUM = 'momentum',
-  INERTIA = 'inertia'
-}
-
 type Action = 'next' | 'prev'
 type TouchPhase = 'TOUCH_END' | 'TOUCH_MOVE' | 'TOUCH_START'
-type Scrolling = 'momentum' | 'inertia'
 
 interface SliderOptions {
   threshold?: number
   elasticity?: number
   thresholdSpeed?: number
-  /**
-   * UnImplemented
-   */
-  scrolling?: Scrolling
 }
 
 interface TouchProps {
@@ -154,26 +144,37 @@ const end: <T = HTMLElement>(
    */
   const velocity = displacement / period
 
+  const speed = Math.abs(velocity)
+
+  const transformActionablePartialProps = {
+    target,
+    period,
+    action,
+    phase: TouchPhaseEnum.TOUCH_END
+  }
+
+  ref.current.domPosition = ref.current.position
+
   if (
     action === ActionEnum.NEXT &&
     ref.current.domPosition > width - scrollWidth &&
-    (Math.abs(displacement) >= width * threshold || Math.abs(velocity) >= thresholdSpeed)
+    (Math.abs(displacement) >= width * threshold || speed >= thresholdSpeed)
   ) {
     ref.current.domPosition -= width
 
-    internalTransform(transform)(
-      Object.assign({}, ref.current, { target, action, phase: TouchPhaseEnum.TOUCH_END })
-    )
+    const transformProps = Object.assign({}, ref.current, transformActionablePartialProps)
+
+    internalTransform(transform)(transformProps)
   } else if (
     action === ActionEnum.PREV &&
     ref.current.domPosition < 0 &&
-    (Math.abs(displacement) >= width * threshold || Math.abs(velocity) >= thresholdSpeed)
+    (Math.abs(displacement) >= width * threshold || speed >= thresholdSpeed)
   ) {
     ref.current.domPosition += width
 
-    internalTransform(transform)(
-      Object.assign({}, ref.current, { target, action, phase: TouchPhaseEnum.TOUCH_END })
-    )
+    const transformProps = Object.assign({}, ref.current, transformActionablePartialProps)
+
+    internalTransform(transform)(transformProps)
   } else {
     internalTransform(transform)(
       Object.assign({}, ref.current, { target, phase: TouchPhaseEnum.TOUCH_END })
