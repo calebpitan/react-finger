@@ -5,11 +5,12 @@ node_js:
 git:
   depth: 3
 install:
-  - npm install
+  - npm ci
 script:
   - npm test
 cache:
   directories:
+    - "$HOME/.npm"
     - node_modules
 notifications:
   email: false
